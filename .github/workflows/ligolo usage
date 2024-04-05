@@ -1,0 +1,8 @@
+Setup ligolo in kali and transfer the agent.exe to target:
+#powerful tool, acts like a VPN to connect to the internal network
+
+>sudo ip tuntap add user kali mode tun ligolo
+>sudo ip link set ligolo up
+
+Setup the Python web server for hostinbg the file transfer to target:
+>python server trigger
