@@ -1,0 +1,10 @@
+this is an awesome tool to monitor process in linux env.
+https://forum.hackthebox.com/t/pspy-process-monitoring-cron-job-detection/438
+
+To start it,
+>/path/to/pspy
+this will also reveal bash history
+
+e.g. /bin/sh -c BORG_PASSPHRASE='xinyVzoH2AnJpRK9sfMgBA' borg delete /opt/borgbackup::usb_1713144873    
+
+make sure to chmod +x permission in victim machine.
