@@ -1,0 +1,11 @@
+identify if it's a freebsd machine:
+
+1) login via ssh - the server info
+2) check the dosa.conf location
+3) make use of sudo -l to check cmds that the current user can execute
+4) https://borgbackup.readthedocs.io/en/stable/quickstart.html usage of borg
+
+
+when doing extract of achive, make sure to add '--stdout' to display contents as it will write the contents to disk.
+
+make sure of "su - $username" and "sudo su" etc.
